@@ -1,17 +1,21 @@
-.dotted-user {
+.number-user {
     font-size: 150px;
 
     color: red;
 }
 
-.dotted-cpu {
+.number-cpu {
     font-size: 150px;
 
     color: blue;
 }
 
+ul li {
+    list-style-type: none;
+}
+
 #user-value {
-    animation: mine 1 2s -1.5s;
+    animation: mine 1 1.5s;
 }
 
 @keyframes mine {
@@ -44,7 +48,7 @@
     font-size: 40px;
     font-weight: bold;
 
-    animation: outcome 1 3.25s;
+    animation: outcome 1 4s;
 
 }
 
@@ -53,7 +57,7 @@
         opacity: 0;
     }
 
-    80% {
+    75% {
         opacity: 0;
     }
 
