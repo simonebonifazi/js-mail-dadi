@@ -30,24 +30,105 @@ dadi steps:
 3. stampo in console il vincitore
 */
 
-//1.
-let myReslut = Math.floor(Math.random() * 6) + 1;
-console.log(myReslut);
+
+/*
+
+nuovo approccio
+ho messo nel mark-up i dadi in display:none, ora ad ogni assegnazione casuale del randomizzatore
+voglio rivmuovere la classe d-none del valore indicato
+steps:
+1. per rispettare la mia traccia, devo connettere un event-listener al bottone in pagina
+2. al click, verifico che funzioni
+3. farò uscire il dado che mi serve, collegandolo con una serie di if agli esiti del randomizzatore
+dunque mi devo dichiarare le variabili dei dadi pc e user 
+||posso farlo con un array? in entrambi i casi devo dichiarare le vg
+4. stampo in pagina risultato scritto
+*/
+
+
+//0. randomizzo i valori per noi e per il pc
+let myResult = Math.floor(Math.random() * 6) + 1;
+console.log(myResult);
 let cpuResult = Math.floor(Math.random() * 6) + 1;
 console.log(cpuResult);
 
-//xstampare in dom
-let result = document.getElementById('results')
 
-//stabilisco vincitore e stampo
+//1. dichiaro variabili globali 
+//bottone iniziale
+const startGame = document.getElementById('start');
+// esiti
+const finalResult = document.getElementById('results');
+//singoli dadi
+const usOne = document.getElementById('us-one');
+const usTwo = document.getElementById('us-two');
+const usThree = document.getElementById('us-three');
+const usFour = document.getElementById('us-four');
+const usFive = document.getElementById('us-five');
+const usSix = document.getElementById('us-six');
 
-if (myReslut > cpuResult) {
-    result.innerText = 'Hai vinto TU!'
-    console.log('U WIN')
-} else if (myReslut < cpuResult) {
-    console.log(' U LOOSE(R)')
-    result.innerText = 'Hai perso :('
-} else {
-    console.log('WOW! IT\'S A DRAW!')
-    result.innerText = 'Pari e Patta'
-}
+const cpuOne = document.getElementById('cpu-one');
+const cpuTwo = document.getElementById('cpu-two');
+const cpuThree = document.getElementById('cpu-three');
+const cpuFour = document.getElementById('cpu-four');
+const cpuFive = document.getElementById('cpu-five');
+const cpuSix = document.getElementById('cpu-six');
+//2. attivo al click il mio bottone
+
+startGame.addEventListener('click', function () {
+
+    //rimuovo il d-none da results
+    finalResult.classList.remove('d-none');
+    //funziona; avanti.
+    // adesso ad ogni valore del random aggiungo il corrispondente dado
+    if (myResult == 1) {
+        usOne.classList.remove('d-none');
+    } else if (myResult == 2) {
+        usTwo.classList.remove('d-none');
+    } else if (myResult == 3) {
+        usThree.classList.remove('d-none');
+    } else if (myResult == 4) {
+        usFour.classList.remove('d-none');
+    } else if (myResult == 5) {
+        usFive.classList.remove('d-none');
+    } else if (myResult == 6) {
+        usSix.classList.remove('d-none');
+    };
+    //verifico e poi copio e incollo //! ok! 
+    if (cpuResult == 1) {
+        cpuOne.classList.remove('d-none');
+    } else if (cpuResult == 2) {
+        cpuTwo.classList.remove('d-none');
+    } else if (cpuResult == 3) {
+        cpuThree.classList.remove('d-none');
+    } else if (cpuResult == 4) {
+        cpuFour.classList.remove('d-none');
+    } else if (cpuResult == 5) {
+        cpuFive.classList.remove('d-none');
+    } else if (cpuResult == 6) {
+        cpuSix.classList.remove('d-none');
+    };
+
+    //creo variabile per stampare in DOM
+    let outcome = document.getElementById('outcome');
+
+
+    //stabilisco vincitore e stampo
+    if (myResult > cpuResult) {
+
+        outcome.innerText = 'Congratulazioni! Hai vinto TU! :)';
+        outcome.classList.add('text-danger');
+
+    } else if (myResult < cpuResult) {
+
+        outcome.innerText = 'Peccato! Hai perso :(';
+        outcome.classList.add('text-info');
+
+    } else {
+
+        outcome.innerText = 'Pari e Patta :|';
+        outcome.classList.add('text-muted');
+
+
+    };
+
+});
