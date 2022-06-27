@@ -36,7 +36,7 @@ let welcome = document.getElementById("welcome-message");
 //cambio includes con ciclo for
 //creo variabile booleana
 let validMail = false;
-for (let i = 0; i < emailAllowed.length; i++) {
+for (let i = 0; i < emailAllowed.length && validMail === false; i++) {
 
     if (userMail === emailAllowed[i]) {
         validMail = true;
