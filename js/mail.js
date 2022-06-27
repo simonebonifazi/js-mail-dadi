@@ -33,13 +33,17 @@ const userMail = prompt("Inserisci qui la tua mail...");
 //variabile per stampare messaggio benvenuto 
 let welcome = document.getElementById("welcome-message");
 
-if (emailAllowed.includes(`${userMail}`)) {
+//cambio includes con ciclo for
+//creo variabile booleana
+let validMail = false;
+for (let i = 0; i < emailAllowed.length; i++) {
 
-    alert("Benvenuto!");
-
-
-    welcome.innerText = 'Congratulazioni! ha effettuato correttamente l\'accesso alla nostra pagina. Buon divertimento!';
-} else {
-
-    alert("Siamo spiacenti, la mail inserita non risulta essere abilitata per effettuare l'accesso. ");
+    if (userMail === emailAllowed[i]) {
+        validMail = true;
+        // welcome.innerText = 'Congratulazioni! ha effettuato correttamente l\'accesso alla nostra pagina. Buon divertimento!';
+    }
 }
+
+const message = validMail ? "Benvenuto in questa pagina, divertiti!" : "Siamo spiacenti, la mail inserita non risulta essere autorizzata ad effettuare l'accesso."
+console.log(message)
+
