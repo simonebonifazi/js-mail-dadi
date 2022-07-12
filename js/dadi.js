@@ -28,12 +28,7 @@ const cpuFour = document.getElementById('cpu-four');
 const cpuFive = document.getElementById('cpu-five');
 const cpuSix = document.getElementById('cpu-six');
 //2. attivo al click il mio bottone
-//reset con flag
-let reset = false;
-
 startGame.addEventListener('click', function () {
-    reset = false
-    //
     let myResult = Math.floor(Math.random() * 6) + 1;
     let cpuResult = Math.floor(Math.random() * 6) + 1;
     //rimuovo il d-none da results
@@ -55,34 +50,28 @@ startGame.addEventListener('click', function () {
     cpuResult == 5 ? cpuFive.classList.remove('d-none') : cpuFive.classList.add('d-none')
     cpuResult == 6 ? cpuSix.classList.remove('d-none') : cpuSix.classList.add('d-none')
 
-    /**
-     * funzione per stabilire chi vince
-     */
-    const whoBeatWho = () => {
-        if (myResult > cpuResult) {
 
-            outcome.innerText = 'Congratulazioni! Hai vinto TU! :)';
-            outcome.classList.add('text-danger');
-
-
-        } else if (myResult < cpuResult) {
-
-            outcome.innerText = 'Peccato! Hai perso :(';
-            outcome.classList.add('text-info');
-
-        } else {
-
-            outcome.innerText = 'Pari e Patta :|';
-            outcome.classList.add('text-muted');
-
-
-        };
-    }
 
     //creo variabile per stampare in DOM
     let outcome = document.getElementById('outcome');
 
-    whoBeatWho()
     //stabilisco vincitore e stampo
+    if (myResult > cpuResult) {
 
+        outcome.innerText = 'Congratulazioni! Hai vinto TU! :)';
+        outcome.classList.add('text-danger');
+
+
+    } else if (myResult < cpuResult) {
+
+        outcome.innerText = 'Peccato! Hai perso :(';
+        outcome.classList.add('text-info');
+
+    } else {
+
+        outcome.innerText = 'Pari e Patta :|';
+        outcome.classList.add('text-muted');
+
+
+    };
 });
