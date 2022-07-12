@@ -40,10 +40,9 @@ for (let i = 0; i < emailAllowed.length && validMail === false; i++) {
 
     if (userMail === emailAllowed[i]) {
         validMail = true;
-        // welcome.innerText = 'Congratulazioni! ha effettuato correttamente l\'accesso alla nostra pagina. Buon divertimento!';
     }
 }
 
 const message = validMail ? "Benvenuto in questa pagina, divertiti!" : "Siamo spiacenti, la mail inserita non risulta essere autorizzata ad effettuare l'accesso."
-console.log(message)
+welcome.innerText = message
 
