@@ -43,6 +43,6 @@ for (let i = 0; i < emailAllowed.length && validMail === false; i++) {
     }
 }
 
-const message = validMail ? "Benvenuto in questa pagina, divertiti!" : "Siamo spiacenti, la mail inserita non risulta essere autorizzata ad effettuare l'accesso."
+const message = validMail ? "Benvenuto in questa pagina, divertiti!" : alert('Siamo spiacenti, la mail inserita non risulta essere autorizzata ad effettuare l\'accesso.')
 welcome.innerText = message
 
